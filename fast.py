@@ -12,39 +12,30 @@ def buzzer(n):
             Drone.stop_drone_buzzer()
     else:
         for i in range(5):
-            Drone.start_drone_buzzer(500)
-            time.sleep()
+            Drone.drone_buzzer(400, 300)
+            time.sleep(0.3)
 
 def A():
-    Drone.move_distance(1.2, 0, 0.3, 0.4)
-    Drone.move_distance(0.8, 0, 0, 0.4)
-    Drone.move_distance(0, 0, -0.6, 0.4)
-    Drone.move_distance(0, 0 ,  1, 0.4)
-    Drone.move_distance(0.5, 0, 0, 0.4)
-    Drone.move_distance(0, 0, -1, 0.4)
-    Drone.move_distance(0.7, 0, 0, 0.4)
-    Drone.move_distance(0.1, 0, 0, 0.4)
-
-    i = Drone.get_pos_z(unit='m')
-    while 1.5 < i < 2:
-        Drone.move_distance(0, 0, 0.1, 0.3)
-        i = Drone.get_poz_z(unit='m')
-
+    Drone.move_distance(1.2, 0, 0.3, 0.7)
+    Drone.move_distance(1, 0, -0.6, 0.7)
+    Drone.move_distance(0, 0 ,  1, 0.5)
+    Drone.move_distance(1.1, 0, 0, 0.7)
+    Drone.move_distance(1, 0, -1.2, 0.7)
+    Drone.move_distance(0.2, 0, 1.5, 0.5)
     Drone.turn_degree(90, 2, 20)
 
 def B():
-    Drone.move_distance(1, 0, 0, 1)
-    Drone.square(30, 1, -1)
-    time.sleep(50)
-    Drone.move_forward(distance=1.5, units="m", speed=0.5)    
-
+    Drone.move_distance(1, 0, 0, 0.5)
+    Drone.move_forward(0.5, 'm', 0.5)
+    Drone.move_left(0.5, 'm', 0.5)
+    Drone.move_backward(0.5, 'm', 0.5)
+    Drone.move_right(0.5, 'm', 0.5)
+    Drone.move_forward(1.2, "m", 0.5)    
+    Drone.turn_left()
 def C():
     Drone.move_forward(distance=3.2, units="m", speed=1)
-    Drone.turn_degree(90, 2, 20)
 
 def sorting():
-    Drone.hover(20)
-
     with open("unsorted integer.txt", "r", encoding="utf-8") as file:
         lines = file.readlines()
 
@@ -61,14 +52,17 @@ def sorting():
         for num in sorted:
             f.write(f"{num}")
 
-#buzzer()
+Drone.reset_gyro()
+Drone.reset_sensor()
+Drone.set_trim(0, 0)  # 트림 초기화
+sleep(2)
+buzzer(0)
 Drone.takeoff()
 
 A()
-#buzzer()
-Drone.hover(2)
+#buzzer(1)
 B()
-#buzzer
+#buzzer(0)
 sorting()
 C()
 

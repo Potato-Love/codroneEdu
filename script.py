@@ -1,5 +1,7 @@
 from codrone_edu.drone import *
 from time import sleep
+from datetime import datetime
+
 Drone = Drone()
 Drone.pair()
 
@@ -48,7 +50,7 @@ def sorting():
         return quick_sort(left) + [pivot] + quick_sort(right)
 
     sorted = quick_sort(lines)
-    with open("SB-a04-1-sorted_out.txt", "w", encoding="utf-8") as f:
+    with open("SB-a03-1-sorted_out.txt", "w", encoding="utf-8") as f:
         for num in sorted:
             f.write(f"{num}")
 
@@ -58,6 +60,7 @@ Drone.set_trim(0, 0)  # 트림 초기화
 sleep(2)
 buzzer(0)
 Drone.takeoff()
+takeoffTime = datetime.now()
 
 A()
 buzzer(1)
@@ -68,5 +71,14 @@ sleep(1)
 C()
 
 Drone.land()
+landingTime = datetime.now()
+flyingTime = landingTime - takeoffTime
+seconds = flyingTime.total_seconds()
+
 buzzer(1)
 Drone.close()
+
+with open("SB-a03-team-time.txt", "w", encoding="utf-8") as log:
+    log.write(f"이륙 시간: {takeoffTime}\n")
+    log.write(f"착륙 시간: {landingTime}\n")
+    log.write(f"수행 시간: {seconds:.2f}초")
