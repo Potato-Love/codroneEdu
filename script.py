@@ -11,11 +11,11 @@ def buzzer():
         Drone.stop_drone_buzzer()
 
 def A():
-    Drone.move_distance(1.2, 0, 0.3, 0.9)
-    Drone.move_distance(1.2, 0, -0.6, 0.8)
+    Drone.move_distance(1.2, 0, 0.3, 0.8)
+    Drone.move_distance(0.8, 0, -0.6, 0.4)
     Drone.move_distance(0, 0 ,  1, 0.5)
-    Drone.move_distance(0.9, 0, 0, 0.5)
-    Drone.move_distance(1, 0, -1, 0.9)
+    Drone.move_distance(0.5, 0, 0, 0.5)
+    Drone.move_distance(0.7, 0, -1, 0.9)
     Drone.move_distance(0.1, 0, 0.8, 0.5)
     Drone.turn_degree(90, 2, 20)
 
@@ -28,6 +28,9 @@ def C():
     Drone.move_forward(distance=3.2, units="m", speed=1)
 
 def sorting():
+    Drone.turn_degree(90, 2, 20)
+    Drone.hover(20)
+
     with open("unsorted integer.txt", "r", encoding="utf-8") as file:
         lines = file.readlines()
 
@@ -44,16 +47,14 @@ def sorting():
         for num in sorted:
             f.write(f"{num}")
 
-buzzer()
+#buzzer()
 Drone.takeoff()
 
 A()
-buzzer()
+#buzzer()
 Drone.hover(2)
 B()
-buzzer
-Drone.turn_degree(90, 2, 20)
-Drone.hover(2)
+#buzzer
 sorting()
 C()
 
