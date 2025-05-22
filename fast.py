@@ -23,7 +23,13 @@ def A():
     Drone.move_distance(0.5, 0, 0, 0.4)
     Drone.move_distance(0, 0, -1, 0.4)
     Drone.move_distance(0.7, 0, 0, 0.4)
-    Drone.move_distance(0.1, 0, 0.8, 0.4)
+    Drone.move_distance(0.1, 0, 0, 0.4)
+
+    i = Drone.get_pos_z(unit='m')
+    while 1.5 < i < 2:
+        Drone.move_distance(0, 0, 0.1, 0.3)
+        i = Drone.get_poz_z(unit='m')
+
     Drone.turn_degree(90, 2, 20)
 
 def B():
