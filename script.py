@@ -11,11 +11,11 @@ def buzzer():
         Drone.stop_drone_buzzer()
 
 def A():
-    Drone.move_distance(1.2, 0, 0.3, 0.8)
-    Drone.move_distance(0.8, 0, -0.6, 0.4)
+    Drone.move_distance(1.2, 0, 0.3, 0.5)
+    Drone.move_distance(0.9, 0, -0.6, 0.5)
     Drone.move_distance(0, 0 ,  1, 0.5)
-    Drone.move_distance(0.5, 0, 0, 0.5)
-    Drone.move_distance(0.7, 0, -1, 0.9)
+    Drone.move_distance(0.8, 0, 0, 0.5)
+    Drone.move_distance(0.8, 0, -1, 0.5)
     Drone.move_distance(0.1, 0, 0.8, 0.5)
     Drone.turn_degree(90, 2, 20)
 
@@ -48,6 +48,8 @@ def sorting():
             f.write(f"{num}")
 
 #buzzer()
+Drone.reset_gyro()
+Drone.reset_sensor()
 Drone.takeoff()
 
 A()
