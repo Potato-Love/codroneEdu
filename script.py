@@ -18,7 +18,8 @@ def buzzer(n):
             time.sleep(0.3)
 
 def A():
-    Drone.move_distance(1.1, 0, 0.3, 0.7)
+    Drone.move_distance(0, 0, 0.3, 0.7)
+    Drone.move_distance(1.1, 0, 0, 0.7)
     Drone.move_distance(1, 0, -0.6, 0.7)
     Drone.move_distance(0, 0 ,  1, 0.5)
     Drone.move_distance(1.1, 0, 0, 0.7)
@@ -50,7 +51,7 @@ def sorting():
         return quick_sort(left) + [pivot] + quick_sort(right)
 
     sorted = quick_sort(lines)
-    with open("SB-a03-1-sorted_out.txt", "w", encoding="utf-8") as f:
+    with open("SB-a03-김현민조-sorted_out.txt", "w", encoding="utf-8") as f:
         for num in sorted:
             f.write(f"{num}")
 
@@ -78,7 +79,7 @@ seconds = flyingTime.total_seconds()
 buzzer(1)
 Drone.close()
 
-with open("SB-a03-team-time.txt", "w", encoding="utf-8") as log:
+with open("SB-a03-김현민조-time.txt", "w", encoding="utf-8") as log:
     log.write(f"이륙 시간: {takeoffTime}\n")
     log.write(f"착륙 시간: {landingTime}\n")
     log.write(f"수행 시간: {seconds:.2f}초")
